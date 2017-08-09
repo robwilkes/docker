@@ -1,7 +1,7 @@
-# Docker exabgp #
+# Dockerized ExaBGP #
 
 ## Description ##
-Exabgp within Docker.
+ExaBGP within Docker.
 
 Sample configuration provided, which copied to:
 /usr/local/exabgp/etc/exabgp.conf
