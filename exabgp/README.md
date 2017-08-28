@@ -4,7 +4,7 @@
 ExaBGP within Docker.
 
 Sample configuration provided, which copied to:
-/usr/local/exabgp/etc/exabgp.conf
+/usr/local/etc/exabgp/exabgp.cfg
 
 Binds new loopback address: 1.1.1.1/32
 Looks for haproxy process (pid) and if it exists, announces the loopback address to upstream device.
@@ -30,7 +30,7 @@ docker run \
     --cap-add=NET_ADMIN \
     -p 179:179 \
     -d \
-    -v /usr/local/exabgp/etc:/usr/local/exabgp/etc
+    -v /usr/local/etc/exabgp:/usr/local/etc/exabgp
     --name exabgp \
     robwilkes/exabgp
 ```
