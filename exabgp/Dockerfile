@@ -15,17 +15,17 @@ RUN wget -O exabgp.tar.gz "https://github.com/Exa-Networks/exabgp/archive/${EXAB
         && cp -R exabgp/lib/exabgp /usr/lib/python2.7/dist-packages \
         && cp exabgp/bin/* /usr/local/bin \
         && cp exabgp/sbin/* /usr/local/sbin \
-        && mkdir -p /usr/local/exabgp/etc \
-        && mkdir -p /usr/local/exabgp/bin
+        && mkdir -p /usr/local/etc/exabgp \
+        && mkdir -p /usr/local/bin/exabgp
 
 RUN wget "https://raw.githubusercontent.com/robwilkes/ipaddr-py/master/ipaddr.py" \
 	&& cp ipaddr.py /usr/local/lib/python2.7/dist-packages/
 
-COPY etc/exabgp.conf /usr/local/exabgp/etc/exabgp.conf
-COPY bin/healthcheck.py /usr/local/exabgp/bin/healthcheck.py
+COPY etc/exabgp.cfg /usr/local/etc/exabgp/exabgp.cfg
+COPY bin/healthcheck.py /usr/local/bin/exabgp/healthcheck.py
 
-RUN exabgp --fi > /usr/local/exabgp/etc/exabgp.env
+RUN exabgp --fi > /usr/local/etc/exabgp/exabgp.env
 
 EXPOSE 179
 
-CMD ["/usr/local/sbin/exabgp","/usr/local/exabgp/etc/exabgp.conf"]
+CMD ["/usr/local/sbin/exabgp","/usr/local/etc/exabgp/exabgp.cfg"]
