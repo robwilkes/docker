@@ -23,9 +23,10 @@ RUN wget "https://raw.githubusercontent.com/robwilkes/ipaddr-py/master/ipaddr.py
 
 COPY etc/exabgp.cfg /usr/local/etc/exabgp/exabgp.cfg
 COPY bin/healthcheck.py /usr/local/bin/exabgp/healthcheck.py
-
-RUN exabgp --fi > /usr/local/etc/exabgp/exabgp.env
+COPY bin/socketcheck.py /usr/local/bin/exabgp/socketcheck.py
 
 EXPOSE 179
 
+COPY docker-entrypoint.sh /
+ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["/usr/local/sbin/exabgp","/usr/local/etc/exabgp/exabgp.cfg"]
