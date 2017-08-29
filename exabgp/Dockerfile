@@ -25,7 +25,6 @@ RUN wget "https://raw.githubusercontent.com/robwilkes/ipaddr-py/master/ipaddr.py
 	&& cp ipaddr.py /usr/local/lib/python2.7/dist-packages/
 
 COPY etc/exabgp.cfg /usr/local/etc/exabgp/exabgp.cfg
-COPY bin/healthcheck.py /usr/local/bin/exabgp/healthcheck.py
 COPY bin/socketcheck.py /usr/local/bin/exabgp/socketcheck.py
 
 EXPOSE 179
