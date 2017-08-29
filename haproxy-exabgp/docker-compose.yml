@@ -6,10 +6,11 @@ services:
      - NET_ADMIN
     network_mode: host
     ports:
-     - "80:80"
+     - "443:443"
      - "1936:1936"
     volumes:
-     - /usr/local/haproxy/etc:/usr/local/haproxy/etc
+     - /usr/local/etc/haproxy:/usr/local/etc/haproxy
+    restart: unless-stopped
     depends_on:
      - exabgp
   exabgp:
@@ -20,4 +21,5 @@ services:
     ports:
      - "179:179"
     volumes:
-     - /usr/local/exabgp/etc:/usr/local/exabgp/etc
+     - /usr/local/etc/exabgp:/usr/local/etc/exabgp
+    restart: unless-stopped
