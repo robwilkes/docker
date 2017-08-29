@@ -8,4 +8,5 @@ services:
     ports:
      - "179:179"
     volumes:
-     - /usr/local/exabgp/etc:/usr/local/exabgp/etc
+     - /usr/local/etc/exabgp:/usr/local/etc/exabgp
+    restart: unless-stopped
