@@ -24,8 +24,8 @@ RUN wget -O exabgp.tar.gz "https://github.com/Exa-Networks/exabgp/archive/${EXAB
 RUN wget "https://raw.githubusercontent.com/robwilkes/ipaddr-py/master/ipaddr.py" \
 	&& cp ipaddr.py /usr/local/lib/python2.7/dist-packages/
 
+ADD bin /usr/local/bin/exabgp/
 COPY etc/exabgp.cfg /usr/local/etc/exabgp/exabgp.cfg
-COPY bin/socketcheck.py /usr/local/bin/exabgp/socketcheck.py
 
 EXPOSE 179
 
